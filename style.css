@@ -356,3 +356,34 @@ header.scrolled {
     color: #7f8c8d;
     font-size: 14px;
 }
+
+/* More section */
+
+/* .more__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+} */
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+.slider {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+}
+  
+.slide {
+    min-width: 200px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;;
+    margin-right: 20px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
