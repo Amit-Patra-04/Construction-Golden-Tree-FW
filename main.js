@@ -1,4 +1,22 @@
 
+// Mobile Menu Toggle
+// const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+// const navLinks = document.querySelector('.nav-links');
+
+// mobileMenuBtn.addEventListener('click', () => {
+//     navLinks.classList.toggle('show');
+// });
+
+// Header Scroll Effect
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
 // Slider
 
