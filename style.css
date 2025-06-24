@@ -1000,3 +1000,22 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* TOS */
+
+.tosmain {
+    padding: 100px 10px 10px 10px;
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.terms h2 {
+    font-size: 108px;
+    color: #333;
+}
+
+.terms h3 {
+    padding-bottom: 100px;
+    color: #555;
+}
