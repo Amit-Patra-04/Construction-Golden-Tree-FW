@@ -64,3 +64,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// // Form Submission
+// const contactForm = document.getElementById('contactForm');
+
+// contactForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+    
+//     // Get form values
+//     const name = document.getElementById('name').value;
+//     const email = document.getElementById('email').value;
+//     const message = document.getElementById('message').value;
+    
+//     // Here you would typically send the form data to a server
+//     // For this example, we'll just show an alert
+//     alert(`Thank you, ${name}! Your message has been sent. We'll contact you soon at ${email}.`);
+    
+//     // Reset form
+//     contactForm.reset();
+// });
+
+
+
