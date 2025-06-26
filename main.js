@@ -65,6 +65,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Work Section
+
+const track = document.getElementById('carousel-track');
+    const items = Array.from(track.children);
+
+    // Clone all items and append to the track
+    items.forEach(item => {
+      const clone = item.cloneNode(true);
+      track.appendChild(clone);
+    });
+
+    // Wait for DOM to update and then calculate width
+    window.addEventListener('load', () => {
+      const trackWidth = track.scrollWidth / 2; // only original set
+      track.style.animationDuration = `${trackWidth / 50}s`; // adjust speed
+      track.style.width = `${track.scrollWidth}px`;
+
+      const styleSheet = document.styleSheets[0];
+      styleSheet.insertRule(`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-${trackWidth}px); }
+        }
+      `, styleSheet.cssRules.length);
+    });
+
+
+
 // // Form Submission
 // const contactForm = document.getElementById('contactForm');
 
