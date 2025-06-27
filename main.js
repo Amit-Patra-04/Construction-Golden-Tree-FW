@@ -67,31 +67,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Work Section
 
-const track = document.getElementById('carousel-track');
-    const items = Array.from(track.children);
+// const track = document.getElementById('carousel-track');
+//     const items = Array.from(track.children);
 
-    // Clone all items and append to the track
-    items.forEach(item => {
-      const clone = item.cloneNode(true);
-      track.appendChild(clone);
-    });
+//     // Clone all items and append to the track
+//     items.forEach(item => {
+//       const clone = item.cloneNode(true);
+//       track.appendChild(clone);
+//     });
 
-    // Wait for DOM to update and then calculate width
-    window.addEventListener('load', () => {
-      const trackWidth = track.scrollWidth / 2; // only original set
-      track.style.animationDuration = `${trackWidth / 50}s`; // adjust speed
-      track.style.width = `${track.scrollWidth}px`;
+//     // Wait for DOM to update and then calculate width
+//     window.addEventListener('load', () => {
+//       const trackWidth = track.scrollWidth / 2; // only original set
+//       track.style.animationDuration = `${trackWidth / 50}s`; // adjust speed
+//       track.style.width = `${track.scrollWidth}px`;
 
-      const styleSheet = document.styleSheets[0];
-      styleSheet.insertRule(`
-        @keyframes scroll-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-${trackWidth}px); }
+//       const styleSheet = document.styleSheets[0];
+//       styleSheet.insertRule(`
+//         @keyframes scroll-left {
+//           0% { transform: translateX(0); }
+//           100% { transform: translateX(-${trackWidth}px); }
+//         }
+//       `, styleSheet.cssRules.length);
+//     });
+
+// Counter Animation
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+function animateCounters() {
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 1);
+        } else {
+            counter.innerText = target;
         }
-      `, styleSheet.cssRules.length);
     });
+}
 
+// Intersection Observer for Counter Animation
+const statsSection = document.querySelector('.stats');
 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounters();
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+observer.observe(statsSection);
 
 // // Form Submission
 // const contactForm = document.getElementById('contactForm');
